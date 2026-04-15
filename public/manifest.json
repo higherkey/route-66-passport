@@ -1,0 +1,17 @@
+{
+  "name": "Route 66 Digital Passport",
+  "short_name": "R66 Passport",
+  "description": "Collect your digital stamps at iconic Tulsa Route 66 landmarks.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FDF5E6",
+  "theme_color": "#ED8B00",
+  "icons": [
+    {
+      "src": "/splash.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

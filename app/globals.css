@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Inter:wght@400;600&display=swap');
+
+@import "@picocss/pico/css/pico.min.css";
+
+:root {
+  --primary: #ED8B00; /* Desert Orange */
+  --primary-hover: #CD853F;
+  --secondary: #00E5FF; /* Neon Blue */
+  --background-cream: #FDF5E6; /* Old Lace / Cream */
+  --font-family-header: 'Arvo', serif;
+  --font-family-body: 'Inter', sans-serif;
+  
+  /* Pico dynamic overrides */
+  --pico-font-family-sans-serif: var(--font-family-body);
+  --pico-primary: var(--primary);
+  --pico-primary-hover: var(--primary-hover);
+  --pico-background-color: var(--background-cream);
+}
+
+h1, h2, h3, h4, .brand-font {
+  font-family: var(--font-family-header);
+  font-weight: 700;
+  color: #3d3d3d;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+body {
+  background-color: var(--background-cream);
+  color: #2c2c2c;
+}
+
+.postcard-bg {
+  background-image: linear-gradient(rgba(253, 245, 230, 0.9), rgba(253, 245, 230, 0.9)), url('/splash.png');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}
+
+.stamp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.stamp-card {
+  background: white;
+  border: 4px solid #fff;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 350px;
+}
+
+.stamp-card:hover {
+  transform: translateY(-5px) rotate(1deg);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.stamp-badge {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  transition: all 0.5s ease;
+  background: #eee;
+  color: #888;
+  filter: grayscale(1);
+}
+
+.stamp-badge.authenticated {
+  background: var(--secondary);
+  color: white;
+  filter: grayscale(0);
+  box-shadow: 0 0 15px var(--secondary), 0 0 30px var(--secondary);
+  animation: neon-pulse 2s infinite;
+}
+
+@keyframes neon-pulse {
+  0% { transform: scale(1); box-shadow: 0 0 15px var(--secondary); }
+  50% { transform: scale(1.05); box-shadow: 0 0 25px var(--secondary), 0 0 40px var(--secondary); }
+  100% { transform: scale(1); box-shadow: 0 0 15px var(--secondary); }
+}
+
+.neon-orange-btn {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.neon-orange-btn:hover {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
