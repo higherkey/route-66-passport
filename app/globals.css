@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Inter:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Outfit:wght@300;400;700&display=swap');
 
 @import "@picocss/pico/css/pico.min.css";
 
@@ -6,102 +6,194 @@
   --primary: #ED8B00; /* Desert Orange */
   --primary-hover: #CD853F;
   --secondary: #00E5FF; /* Neon Blue */
-  --background-cream: #FDF5E6; /* Old Lace / Cream */
-  --font-family-header: 'Arvo', serif;
-  --font-family-body: 'Inter', sans-serif;
+  --background-cream: #FDF5E6;
+  --font-family-header: 'Bree Serif', serif;
+  --font-family-body: 'Outfit', sans-serif;
   
-  /* Pico dynamic overrides */
   --pico-font-family-sans-serif: var(--font-family-body);
   --pico-primary: var(--primary);
   --pico-primary-hover: var(--primary-hover);
-  --pico-background-color: var(--background-cream);
-}
-
-h1, h2, h3, h4, .brand-font {
-  font-family: var(--font-family-header);
-  font-weight: 700;
-  color: #3d3d3d;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  --pico-background-color: transparent;
 }
 
 body {
-  background-color: var(--background-cream);
-  color: #2c2c2c;
-}
-
-.postcard-bg {
-  background-image: linear-gradient(rgba(253, 245, 230, 0.9), rgba(253, 245, 230, 0.9)), url('/splash.png');
-  background-size: cover;
-  background-position: center;
+  margin: 0;
+  padding: 0;
   min-height: 100vh;
+  background-color: var(--background-cream);
+  background-image: url('/paper.png');
+  background-blend-mode: multiply;
+  background-size: 500px;
+  color: #333;
+  overflow-x: hidden;
 }
 
+/* Postcard Header */
+.postcard-header {
+  text-align: center;
+  padding: 4rem 1rem 2rem;
+  position: relative;
+  border-bottom: 2px dashed rgba(0,0,0,0.1);
+  margin-bottom: 3rem;
+}
+
+.vintage-logo {
+  max-width: 180px;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+h1, h2, h3 {
+  font-family: var(--font-family-header);
+  letter-spacing: -0.5px;
+}
+
+/* Postage Stamp Card */
 .stamp-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  padding: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .stamp-card {
   background: white;
-  border: 4px solid #fff;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-  padding: 1.5rem;
+  padding: 2.5rem;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 350px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  
+  /* Postage Stamp Edges (Semi-distressed) */
+  mask-image: radial-gradient(circle at 0 0, transparent 0, transparent 12px, black 13px),
+              radial-gradient(circle at 100% 0, transparent 0, transparent 12px, black 13px),
+              radial-gradient(circle at 0 100%, transparent 0, transparent 12px, black 13px),
+              radial-gradient(circle at 100% 100%, transparent 0, transparent 12px, black 13px);
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+  
+  /* Using pseudo-elements for the perforated edge look */
+  border: 15px solid white;
+  outline: 1px solid rgba(0,0,0,0.05);
+}
+
+.stamp-card::before {
+  content: '';
+  position: absolute;
+  top: -15px; left: 20px; right: 20px; height: 30px;
+  background-image: radial-gradient(circle, transparent 8px, white 9px);
+  background-size: 30px 30px;
+  background-position: center;
+  z-index: 2;
+}
+
+.stamp-card::after {
+  content: '';
+  position: absolute;
+  bottom: -15px; left: 20px; right: 20px; height: 30px;
+  background-image: radial-gradient(circle, transparent 8px, white 9px);
+  background-size: 30px 30px;
+  background-position: center;
+  z-index: 2;
 }
 
 .stamp-card:hover {
-  transform: translateY(-5px) rotate(1deg);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  transform: scale(1.02) rotate(0.5deg);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
 }
 
+/* The Stamp Circle */
 .stamp-badge {
-  width: 120px;
-  height: 120px;
-  margin: 0 auto 1rem;
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 1.5rem;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3rem;
-  transition: all 0.5s ease;
-  background: #eee;
-  color: #888;
-  filter: grayscale(1);
+  font-size: 4rem;
+  background: rgba(0,0,0,0.03);
+  border: 3px solid rgba(0,0,0,0.05);
+  transition: all 0.6s ease;
+  filter: grayscale(1) opacity(0.4);
+  position: relative;
 }
 
 .stamp-badge.authenticated {
-  background: var(--secondary);
-  color: white;
-  filter: grayscale(0);
-  box-shadow: 0 0 15px var(--secondary), 0 0 30px var(--secondary);
-  animation: neon-pulse 2s infinite;
+  filter: grayscale(0) opacity(1);
+  background: white;
+  border-color: var(--secondary);
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.4), inset 0 0 15px rgba(0, 229, 255, 0.2);
+  animation: neon-flicker 1.5s infinite alternate;
 }
 
-@keyframes neon-pulse {
-  0% { transform: scale(1); box-shadow: 0 0 15px var(--secondary); }
-  50% { transform: scale(1.05); box-shadow: 0 0 25px var(--secondary), 0 0 40px var(--secondary); }
-  100% { transform: scale(1); box-shadow: 0 0 15px var(--secondary); }
+@keyframes neon-flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    box-shadow: 0 0 15px var(--secondary), inset 0 0 10px var(--secondary);
+  }
+  20%, 22%, 24%, 55% {
+    box-shadow: none;
+  }
 }
 
-.neon-orange-btn {
-  background-color: var(--primary);
-  border-color: var(--primary);
-  color: white;
-  font-weight: 700;
+.stamp-badge.authenticated::after {
+  content: 'COLLECTED';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-15deg);
+  font-family: var(--font-family-header);
+  font-size: 0.8rem;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  padding: 2px 5px;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.btn-stamp {
+  background: var(--primary);
+  border: none;
+  border-radius: 0;
+  font-family: var(--font-family-header);
   text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+  transition: all 0.2s;
 }
 
-.neon-orange-btn:hover {
-  background-color: var(--primary-hover);
-  border-color: var(--primary-hover);
+.btn-stamp:hover:not(:disabled) {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px rgba(0,0,0,0.15);
+}
+
+.btn-stamp:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px rgba(0,0,0,0);
+}
+
+.btn-stamp.visited {
+  background: #eee;
+  color: #888;
+  box-shadow: none;
+  cursor: default;
+}
+
+/* Distressed Overlay */
+.noise-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  opacity: 0.03;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3BaseFilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
