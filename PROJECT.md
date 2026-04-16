@@ -9,6 +9,7 @@ A digital passport for the modern road-tripper, blending the vintage charm of "T
 - **Framework**: Next.js 14 (App Router)
 - **Styling**: [Pico.css](https://picocss.com/) (Classless CSS) + Custom Neon/Retro accents
 - **PWA**: `next-pwa` for offline-first capabilities
+- **Deployment**: [GitHub Pages](https://pages.github.com/) (using GitHub Actions)
 - **Geolocation**: Web browser Geolocation API for proximity-based stamping
 - **Persistence**: LocalStorage (Phase 1) transitioning to Supabase (Phase 2)
 - **Map**: Mapbox GL JS (Future Phase)
