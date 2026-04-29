@@ -1,6 +1,8 @@
 # Route 66 Digital Passport
 
-Welcome to the **Route 66 Digital Passport**, a centennial project designed to help you explore "The Mother Road."
+> A centennial digital passport for exploring Route 66 — "The Mother Road."
+
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=flat-square)](https://higherkey.github.io/route-66-passport/)
 
 ## Quickstart
 
