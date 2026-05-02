@@ -34,7 +34,7 @@ export function useGeolocation() {
 
     const watcher = navigator.geolocation.watchPosition(handleSuccess, handleError, {
       enableHighAccuracy: true,
-      timeout: 5000,
+      timeout: 15000,
       maximumAge: 0
     });
 

@@ -16,7 +16,8 @@
 - [x] Make coordinates prominent (dark terminal pill in header)
 - [x] Fix excess margin (removed Pico `.container` padding override)
 - [x] Update footer branding ("Designed by Higherkey") and contrast
-- [ ] Final visual audit for "Beta" state
+- [x] Fix GitHub Pages asset path resolution (`basePath` configuration)
+- [x] Final visual audit for "Beta" state
 
 ### File List
 - `app/globals.css`: [MODIFY] Full rewrite — design tokens, seamless bg, compact header, grid, cards.
