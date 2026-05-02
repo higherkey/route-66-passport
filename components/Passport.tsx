@@ -4,6 +4,8 @@ import { TULSA_LANDMARKS, calculateDistance, Landmark } from '../lib/landmarks';
 import { useGeolocation } from '../hooks/useGeolocation';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 
+const BASE_PATH = '/route-66-passport';
+
 export default function Passport() {
   const { lat, lng, error: geoError } = useGeolocation();
   const [stamps, setStamps] = useLocalStorage<Record<string, boolean>>('route-66-stamps', {});
@@ -67,7 +69,7 @@ export default function Passport() {
       {/* ── COMPACT HEADER ───────────────────────────────────── */}
       <header className="site-header">
         <div className="logo-wrap">
-          <img src="/logo.png" alt="Route 66 Tulsa" className="vintage-logo" />
+          <img src={`${BASE_PATH}/logo.png`} alt="Route 66 Tulsa" className="vintage-logo" />
           <div>
             <h1>Digital Passport</h1>
             <p className="subtitle">Centennial Expedition · 1926–2026</p>

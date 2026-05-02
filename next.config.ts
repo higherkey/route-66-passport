@@ -11,6 +11,7 @@ const withPWA = withPWAInit({
 
 const nextConfig: NextConfig = {
   output: 'export',
+  basePath: '/route-66-passport',
   images: {
     unoptimized: true,
   },

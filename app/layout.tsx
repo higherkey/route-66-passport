@@ -31,8 +31,8 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="light">
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/favicon.png" type="image/png" />
+        <link rel="icon" href="/route-66-passport/favicon.ico" sizes="any" />
+        <link rel="icon" href="/route-66-passport/favicon.png" type="image/png" />
       </head>
       <body>
         {children}
